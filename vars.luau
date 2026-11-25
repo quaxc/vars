@@ -1,0 +1,169 @@
+-- env and 100 unc functions
+local env = (getgenv and getgenv()) or _G
+local cloneref = cloneref or function(obj) return obj end
+local clonefunction = clonefunction or function(fn) return fn end
+local newcclosure = newcclosure or function(fn) return fn end
+local hookfunction = hookfunction or replaceclosure
+local hookmetamethod = hookmetamethod
+local getnamecallmethod = getnamecallmethod
+local checkcaller = checkcaller
+local getgc = getgc
+local getupvalues = getupvalues or debug.getupvalues
+local setupvalue = setupvalue or debug.setupvalue
+local getconstants = getconstants or debug.getconstants
+local setconstant = setconstant or debug.setconstant
+local getconnections = getconnections
+local firesignal = firesignal
+local firetouchinterest = firetouchinterest
+local fireproximityprompt = fireproximityprompt
+local setthreadidentity = setthreadidentity or (syn and syn.set_thread_identity)
+local getthreadidentity = getthreadidentity or (syn and syn.get_thread_identity)
+local request = request or http_request or (syn and syn.request) or (http and http.request)
+local setclipboard = setclipboard or toclipboard
+local gethui = gethui or function() return CoreGui end
+
+-- file system
+local isfile = isfile
+local readfile = readfile
+local writefile = writefile
+local delfile = delfile
+local isfolder = isfolder
+local makefolder = makefolder
+local delfolder = delfolder
+local listfiles = listfiles
+
+--roblox services
+local Players = cloneref(game:GetService("Players"))
+local RunService = cloneref(game:GetService("RunService"))
+local UserInputService = cloneref(game:GetService("UserInputService"))
+local TweenService = cloneref(game:GetService("TweenService"))
+local Workspace = cloneref(game:GetService("Workspace"))
+local Lighting = cloneref(game:GetService("Lighting"))
+local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"))
+local ReplicatedFirst = cloneref(game:GetService("ReplicatedFirst"))
+local HttpService = cloneref(game:GetService("HttpService"))
+local CoreGui = cloneref(game:GetService("CoreGui"))
+local StarterGui = cloneref(game:GetService("StarterGui"))
+local StarterPack = cloneref(game:GetService("StarterPack"))
+local SoundService = cloneref(game:GetService("SoundService"))
+local TeleportService = cloneref(game:GetService("TeleportService"))
+local MarketplaceService = cloneref(game:GetService("MarketplaceService"))
+local VirtualInputManager = cloneref(game:GetService("VirtualInputManager"))
+local VirtualUser = cloneref(game:GetService("VirtualUser"))
+local ContextActionService = cloneref(game:GetService("ContextActionService"))
+local GuiService = cloneref(game:GetService("GuiService"))
+local Stats = cloneref(game:GetService("Stats"))
+local CollectionService = cloneref(game:GetService("CollectionService"))
+local PathfindingService = cloneref(game:GetService("PathfindingService"))
+local Teams = cloneref(game:GetService("Teams"))
+local TextService = cloneref(game:GetService("TextService"))
+local Debris = cloneref(game:GetService("Debris"))
+local PhysicsService = cloneref(game:GetService("PhysicsService"))
+
+--player camera
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+local Backpack = LocalPlayer:WaitForChild("Backpack")
+local Camera = Workspace.CurrentCamera
+local Mouse = LocalPlayer:GetMouse()
+
+local RenderStepped = RunService.RenderStepped
+local Stepped = RunService.Stepped
+local Heartbeat = RunService.Heartbeat
+
+-- data types and constructions
+local Vector2_new = Vector2.new
+local Vector2_zero = Vector2.zero
+local Vector3_new = Vector3.new
+local Vector3_zero = Vector3.zero
+local CFrame_new = CFrame.new
+local CFrame_Angles = CFrame.Angles
+local CFrame_fromEulerAnglesYXZ = CFrame.fromEulerAnglesYXZ
+local CFrame_lookAt = CFrame.lookAt
+local Color3_new = Color3.new
+local Color3_fromRGB = Color3.fromRGB
+local Color3_fromHSV = Color3.fromHSV
+local Color3_fromHex = Color3.fromHex
+local ColorSequence_new = ColorSequence.new
+local ColorSequenceKeypoint_new = ColorSequenceKeypoint.new
+local NumberSequence_new = NumberSequence.new
+local NumberSequenceKeypoint_new = NumberSequenceKeypoint.new
+local UDim_new = UDim.new
+local UDim2_new = UDim2.new
+local UDim2_fromOffset = UDim2.fromOffset
+local UDim2_fromScale = UDim2.fromScale
+local Rect_new = Rect.new
+local Region3_new = Region3.new
+local Ray_new = Ray.new
+local RaycastParams_new = RaycastParams.new
+local OverlapParams_new = OverlapParams.new
+local TweenInfo_new = TweenInfo.new
+local Instance_new = Instance.new
+local Drawing_new = Drawing and Drawing.new
+local Enum = Enum
+
+-- math strings
+local math_floor = math.floor
+local math_ceil = math.ceil
+local math_round = math.round
+local math_clamp = math.clamp
+local math_abs = math.abs
+local math_rad = math.rad
+local math_deg = math.deg
+local math_sin = math.sin
+local math_cos = math.cos
+local math_tan = math.tan
+local math_atan2 = math.atan2
+local math_sqrt = math.sqrt
+local math_random = math.random
+local math_min = math.min
+local math_max = math.max
+local math_huge = math.huge
+local math_pi = math.pi
+
+local table_insert = table.insert
+local table_remove = table.remove
+local table_find = table.find
+local table_clear = table.clear
+local table_sort = table.sort
+local table_concat = table.concat
+local table_unpack = table.unpack
+local table_pack = table.pack
+local table_create = table.create
+
+local string_format = string.format
+local string_sub = string.sub
+local string_gsub = string.gsub
+local string_find = string.find
+local string_match = string.match
+local string_lower = string.lower
+local string_upper = string.upper
+local string_len = string.len
+local string_split = string.split
+local string_byte = string.byte
+local string_char = string.char
+
+local task_wait = task.wait
+local task_spawn = task.spawn
+local task_defer = task.defer
+local task_delay = task.delay
+local task_cancel = task.cancel
+
+local os_clock = os.clock
+local os_time = os.time
+local tick = tick
+local pairs = pairs
+local ipairs = ipairs
+local next = next
+local pcall = pcall
+local xpcall = xpcall
+local typeof = typeof
+local type = type
+local tostring = tostring
+local tonumber = tonumber
+local unpack = unpack
+local select = select
+local setmetatable = setmetatable
+local getmetatable = getmetatable
+local rawget = rawget
+local rawset = rawset
