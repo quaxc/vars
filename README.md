@@ -1,5 +1,5 @@
 ```lua
-local Vars = loadstring(game:HttpGet("https://githubusercontent.com](https://raw.githubusercontent.com/quaxc/vars/refs/heads/main/loadstring.luau"))()
+local Vars = loadstring(game:HttpGet("https://raw.githubusercontent.com/quaxc/vars/refs/heads/main/loadstring.luau"))()
 
 -- Usage examples:
 print(Vars.LocalPlayer.Name)
